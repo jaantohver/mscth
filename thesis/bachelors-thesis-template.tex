@@ -331,15 +331,15 @@ This section gives an overview of current commertial OCR and image enhancement s
 
 \subsection{History}
 
-The history of OCR can be traced back to the late 1920s when inventor Emanuel Goldberg started developing a system he called a "Statistical Machine" which searched microfilm archives using an optical code recognition system. He was granted a patent for his invention in 1931, which was later acquired by IBM.~\cite{1838389}
+The history of OCR can be traced back to the late 1920s when inventor Emanuel Goldberg started developing a system he called a "Statistical Machine" which searched microfilm archives using an optical code recognition system. He was granted a patent for his invention in 1931, which was later acquired by IBM. ~\cite{1838389}
 
-Most of modern OCR systems are based on artificial neural networks, often called just neural networks (NNs). The theoretical base for NNs dates back to the end of the 1800s and is based on the structure of the human brain in which neurons interact with eachother and the bonds between neurons can strengthen and weaken over time.
+Most of modern OCR systems are based on artificial neural networks, often called just neural networks (NNs). The theoretical base for NNs dates back to the end of the 1800s and is based on the structure of the human brain in which neurons interact with eachother and the bonds between neurons can strengthen and weaken over time. ~\cite{SCHMIDHUBER201585}
 
-An artificial neural network consists of many simple connected processors, called artificial neurons, which produce activations based on an activation fuction producing real numbers in a predefined range. The simplest neural network consists of an input layer and an output layer. The neurons in the input layer produce activations based on the input. The output layer produces an output based on the activations of input layers.~\cite{SCHMIDHUBER201585}
+An artificial neural network consists of many simple connected processors, called artificial neurons, which produce activations based on an activation fuction producing real numbers in a predefined range. The simplest neural network consists of an input layer and an output layer. The neurons in the input layer produce activations based on the input. The output layer produces an output based on the activations of input layers. ~\cite{SCHMIDHUBER201585}
 
-Most NNs are not as simple as that and contain any number of hidden layers between the input and output layers. These hidden layers each consist of any number of neurons which each produce an activation based on the output of another layer.~\cite{SCHMIDHUBER201585} \TODO{maybe a graphic} \TODO{Does not cover all cases? http://www.asimovinstitute.org/neural-network-zoo/}
+Most NNs are not as simple as that and contain any number of hidden layers between the input and output layers. These hidden layers each consist of any number of neurons which each produce an activation based on the output of another layer. There are various architectures used for NNs, some are combinations of other types of networks. This work mostly focuses on convolutional neural networks (CNNs) and recurrent neural networks (RNNs). ~\cite{SCHMIDHUBER201585}
 
-There are various architectures used for NNs, some are combinations of other types of networks. This work mostly focuses on convolutional neural networks (CNNs) and recurrent neural networks (RNNs).~\cite{SCHMIDHUBER201585}
+\includegraphics [width=\textwidth, height=\textheight, keepaspectratio] {neuralnetworks.png} ~\cite{netzoo}
 
 CNNs are primarily used for image processing. CNNs are feedforward networks (FFNs), which means neurons do no back-propagate any information and only pass it forward to the next layer. A distinct feature of CNNs is that they consist of convolutional layers in which not all neurons are connected to all neaurons in the previous and next layers.~\cite{SCHMIDHUBER201585}
 
@@ -349,7 +349,7 @@ RNNs are primarily used for text and speech processing. RNNs are FFNs like CNNs,
 
 \subsection{State of the Art}
 
-CNNs and RNNs are not mutually exclusive, however, and Baoguang Shi et'al devised one of the most promising novel OCR concepts in recent history in the form of a convolutional recurrent neural network (CRNN) in their 2015 paper "An End-to-End Trainable Neural Network for Image-based Sequence Recognition and Its Application to Scene Text Recognition".
+CNNs and RNNs are not mutually exclusive, however, and Baoguang Shi et al devised one of the most promising novel OCR concepts in recent history in the form of a convolutional recurrent neural network (CRNN) in their 2015 paper "An End-to-End Trainable Neural Network for Image-based Sequence Recognition and Its Application to Scene Text Recognition".
 
 Their reasoning is that popular models like CNN cannot be applied to sequence prediction, since they operate on fixed size inputs and outputs. CRNN then behaves like an RNN in that it can accept inputs and return outputs of arbitrary size, while still retaining properties of CNNs which make them invaluable in image processing.
 
@@ -358,227 +358,6 @@ Their reasoning is that popular models like CNN cannot be applied to sequence pr
 Tesseract is probably the most well known OCR engine. It started as proprietary software developed by Hewlett Packard in 1985, but was open sourced in 2005. Since then its development is continued by the community. Development has been sponsored by Google starting from 2006. \TODO {citations}
 
 Tesseract supports over 100 languages by default and can be trained to work with any language or script. 
-
-\subsubsection{Title of Subsubsection 2}
-
-Some text...
-
-\subsection{Title of Subsection 2} 
-
-Rule: If you divide the text into subsections (or subsubsections) then there has to be at least two of them, otherwise do not create any. 
-
-Tip: You can also use paragraphs, e.g.
-\paragraph{Type rules for integers.} Some text ...
-
-\paragraph{Type rules for rational numbers.} Some text here too...
-
-\subsection{How to use references} \label{sec:using_ref}
-
-\paragraph{Cross-references to figures, tables and other document elements.}
-LaTeX  internally numbers all kind of objects that have sequence numbers:
-\begin{itemize}
-\item chapters, sections, subsections;
-\item figures, tables, algorithms;
-\item equations, equation arrays.
-\end{itemize}
-To reference them automatically, you have to generate a label using \texttt{$\backslash$label\{some-name\}} just after the object that has the number inside. Usually, labels of different objects are split into different namespaces by adding dedicated prefix, such as \texttt{sec:}, \texttt{fig:}. To use the corresponding reference, you must use command \texttt{$\backslash$ref} or \texttt{$\backslash$eqref}. For instance, we can reference this subsection by calling Section~\ref{sec:using_ref}. Note that there should be a nonbreakable space \texttt{\~} between the name of the object and the reference so that they would not appear on different lines (does not work in Estonian).          
-
-\paragraph{Citations.}
-Usually, you also want to reference articles, webpages, tools or programs or books. For that you should use citations and references. The system is similar to the cross-referencing system in LaTeX. For each reference you must assign a unique label. Again, there are many naming schemes for labels. However, as you have a short document anything works. To reference to a particular source you must use \texttt{$\backslash$cite\{label\}} or \texttt{$\backslash$cite[page]\{label\}}. 
-
-References themselves can be part of a LaTeX source file. For that you need to define a bibliography section. However, this approach is really uncommon. It is much more easier to use BibTeX to synthesise the right reference form for you. For that you must use two commands in the LaTeX source
-\begin{itemize}
-\item $\backslash$bibliographystyle\{alpha\} or $\backslash$bibliographystyle\{plain\}
-\item $\backslash$bibliography\{file-name\}
-\end{itemize}
-The first command determines whether the references are numbered by letter-number combinations or by cryptic numbers. It is more common to use \texttt{alpha} style. The second command determines the file containing the bibliographic entries. The file should end with \texttt{bib} extension. Each reference there is in specific form. The simplest way to avoid all technicalities is to use graphical frontend  Jabref (\url{http://jabref.sourceforge.net/}) to manage references. Another alternative is to use DBLP database of references and copy BibTeX entries directly form there.   
-
-The following paragraph shows how references can be used. Game-based proving is a way to analyse security of a cryptographic protocol~\cite{GameB_1, GameB_2}. There are automatic provers, such as {CertiCrypt\-}~\cite{certicrypt} and ProVerif~\cite{proVerif}.
-
-\newpage
-\section{How to add figures and pictures to your thesis}
-
-Here are a few examples of how to add figures or pictures to your thesis (see Figures~\ref{fig:fnCompModel}, \ref{fig:game-based_proofs}, \ref{fig:proveit_screenshot}).
-
-Rule: All the figures, tables and extras in the thesis have to be referred to somewhere in the text.
-
-\begin{figure} [ht] %try to place the figure here (next option top of the page) 
-\begin{center}
-\includegraphics[width=0.8\textwidth]{computational_model_function}
-\caption{The title of the Figure.}
-\label{fig:fnCompModel}
-\end{center}
-\end{figure}
-
-\begin{figure} [!ht] %if [h] doesn't work, we can force with !
-\begin{center}
-\includegraphics[width=\textwidth]{game-based_proofs}
-\caption{Refer if the figure is not yours~\cite{kamm12}.}
-\label{fig:game-based_proofs}
-\end{center}
-\end{figure}
-
-\begin{figure} [p]
-\begin{center}
-\includegraphics[width=\textwidth]{proveit_screenshot}
-\caption{Screenshot of \proveit.}
-\label{fig:proveit_screenshot}
-\end{center}
-\end{figure}
-
-Tip: If you add a screenshot then labeling the parts might help make the text more understandable (panel C vs bottom left part), e.g.
-
-\begin{figure} [htbp]
-\begin{tabular}{c c}
-%
-\begin{minipage}{0.45\textwidth}
-\includegraphics[width=\textwidth]{LCA_2_solutions}
-\end{minipage}
-%
-&
-\begin{minipage}{0.55\textwidth}
-\centering
-\begin{tabular}{ l | l |}
-	Node & Decendants \\ \hline
-  1 & 2, 3, 4 \\ \hline
-  2 & 3, 4 \\ \hline
-  3 & \\ \hline
-  4 & \\ \hline
-  5 & 3, 4, 6, 7 \\ \hline
-  6 & 4 \\ \hline
-  7 & 3 \\  \hline
-  8 & 3, 4, 5, 6, 7\\ \hline
-  9 & 3, 4, 5, 6, 7\\ \hline
-\end{tabular}
-\end{minipage}
-\end{tabular}
-%
-\caption{Example how to put two figures parallel to each other.}
-\label{fig:LCA_2_solutions}
-\end{figure}
-
-Example: A screenshot of \proveit can be seen on Figure~\ref{fig:proveit_screenshot}. The user first enters the pseudocode of the initial game in panel B. \proveit also keeps track of all the previous games showing the progress on a graph seen in panel A.
-
-There are two figures side by side on Figure~\ref{fig:LCA_2_solutions}.
-
-\clearpage %if newpage doesn't work
-\section{Other Ways to Represent Data}
-
-\subsection{Tables}
-
-\begin{table}[h]
-\centering
-\caption{Statements in the \proveit language.}
-\begin{tabular}{| l | l |}
-	\hline
-	\bf{Statement} & \bf{Typeset Example} \\
-	\hline
-	assignment & $a := 5 + b$ \\
-	\hline
-	uniform choice & $m <- M$ \\
-	\hline
-	function signature & $f : K \times M -> L$\\
-	\hline
-\end{tabular}
-\label{tab:statements}
-\end{table}
-
-
-\subsection{Lists}
-
-Numbered list example:
-\begin{enumerate}
-	\item item one; 
-	\item item two;
-	\item item three.
-\end{enumerate} 
-
-\subsection{Math mode}
-Example:
-\begin{equation}
-a + b = c + d
-\end{equation}
-Aligning:
-\begin{align*}
-	a &= 5 \\
-	b + c &= a \\
-	a -2*3 &= 5/4
-\end{align*}
-Hint: Variables or equations in text are separated with \$ sign, e.g. $a$, $x - y$.
-
-\paragraph{Inference Rules}
-\[ 
-	\inference[addition]{x : T & y : T}{x + y : T} 
-\]
-Bigger example:
-\[
-\inference[assign]{c := a + b & 
-	\inference[addG]{a : \typeRat & 
-		\inference[var]{b : \typeInt & \typeInt \subseteq \typeRat}{b : \typeRat}
-		}{a + b : \typeRat}
-	}{c : \typeRat}
-\]
-
-
-\subsection{algorithm2e}
-
-\begin{algorithm} [!h]
-	\caption{typeChecking} \label{alg:typeChecking}
-	\KwIn{Abstract syntax tree}
-	\KwResult{Type checking result; In addition, type table \typeF{type\_G} for global variables, \typeF{game} for the main game and \typeF{fun} for each $fun \in F$}
-	\SetKwData{s}{s}
-	\BlankLine
-	
-	\While{something changed in last cycle}{
-		\lForEach{global statement \s} {
-			\parseStatement{\s, \typeF{type\_G}}\;
-		}
-		\ForEach{function $fun$} {
-		\lForEach{statement \s in $fun$} {
-			\parseStatement{\s, \typeF{fun}}\;
-		}
-		}
-		\lForEach{statement \s in game} {
-			\parseStatement{\s, \typeF{game}}\;
-		}
-	}
-	%\eIf{error messages were found}{\Return \False\;}{\Return \True\;}
-\end{algorithm}
-
-\subsection{Pseudocode}
-
-\begin{figure} [htb]
-\begin{lstlisting}
-expression
-  : NUMBER
-  | VARIABLE
-  | '+' expression
-  | expression '+' expression
-  | expression '*' expression
-  | function_name '(' parameters ')'
-  | '(' expression ')'
-\end{lstlisting}
-\caption{Grammar of arithmetic expressions.}
-\label{fig:parser_exp}
-\end{figure}
-
-\subsection{Frame Around Information}
-
-Tip: We can use minipage to create a frame around some important information.
-\begin{figure} [h]
-\frame{
-\begin{minipage}{\textwidth}
-\begin{enumerate}
-	\item integer division ($\opDiv$) -- only usable between \typeInt types
-	\item remainder ($\%$) -- only usable between \typeInt types
-\end{enumerate}
-\end{minipage}
-}
-\caption{Arithmetic operations in \proveit revisited.}
-\label{fig:aritmOp_revisit}
-\end{figure}
-
-
 
 \clearpage
 \section{Conclusion}
@@ -622,6 +401,7 @@ Tip: We can use minipage to create a frame around some important information.
   \addcontentsline{toc}{section}{Appendix}
 }
 
+\newpage
 
 \section*{I. Glossary}
 \addcontentsline{toc}{subsection}{I. Glossary}
@@ -659,7 +439,7 @@ I certify that granting the non-exclusive licence does not infringe the intellec
 \end{enumerate}
 
 \noindent
-Tartu, dd.mm.yyyy
+Tartu, 02.18.2018
 
 \end{document}
 
