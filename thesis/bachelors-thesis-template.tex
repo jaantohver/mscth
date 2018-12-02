@@ -250,31 +250,19 @@ Software Engineering Curriculum\\%[2mm]
 
 \vspace*{3ex}
 
-\noindent\textbf{Abstract:}
-
-\noindent
-\TODO{One or two sentences providing a basic introduction to the field, comprehensible to a scientist in
-any discipline.}
-\TODO{Two to three sentences of
-more detailed background, comprehensible to scientists in related disciplines.}
-\TODO{One sentence clearly stating the general problem being addressed by this particular
-study.}
-\TODO{One sentence summarising the main result (with the words \"here we show\" or their equivalent).}
-\TODO{Two or three sentences explaining what
-the main result reveals in direct
-comparison to what was thought to be the case previously, or how the main result adds to previous knowledge.}
-\TODO{One or two sentences to put the results into a more general context.}
-\TODO{Two or three sentences to provide a broader perspective, readily comprehensible to a scientist in any discipline, may be included in the first paragraph if the editor considers that the accessibility of the paper is significantly enhanced by their inclusion.}
+\noindent\textbf{Abstract:}\\
 
 Optical character recognition (OCR) from printed and handwritten documents is virtually a solved problem for all practical purposes. Modern OCR systems are able to achieve a 99.9\% detection rate which is on par with human capabilities. Where most OCR systems fall short is when the the input is of low quality, such as containing large amounts of noise or motion blur, or being of low resolution.
 
 A real world use-case of this problem is detecting car licence plates from a security camera feed. Security cameras are often of low resolution, use high levels of compression, and have low framerate since the video footage needs to be stored for a long period of time and storage cost is paramount. In addition, cars can move unpredictably causing motion blur during the capture of a video frame.
 
 The goal of this project is to test various methods of improving OCR accuracy with low quality input. Namely,
-Training a neural network (NN) on low quality images. And testing results on low quality images.
-Training a NN on high quality images and testing on digitally enhanced low quality images.
-Training a NN on digitally enhanced low quality images and testing on digitally enhanced images.
-Using multiframe registration of frames from a video feed to improve detection quality.
+\begin{itemize}
+  \item Training a neural network (NN) on low quality images. And testing results on low quality images.
+  \item Training a NN on high quality images and testing on digitally enhanced low quality images.
+  \item Training a NN on digitally enhanced low quality images and testing on digitally enhanced images.
+  \item Using multiframe registration of frames from a video feed to improve detection quality.
+\end{itemize}
 
 The tests will be conducted using frames from a blurry, noisy, and low resolution video feed containing text. Third party solutions are used to extract areas containing text from those frames.
 
@@ -292,7 +280,7 @@ OCR, Deblurring, Low Quality, Low Resolution
 
 \noindent\textbf{CERCS:}\\
 
-\TODO{CERCS code and name:~\url{https://www.etis.ee/Portal/Classifiers/Details/d3717f7b-bec8-4cd9-8ea4-c89cd56ca46e}}
+%\TODO{CERCS code and name:~\url{https://www.etis.ee/Portal/Classifiers/Details/d3717f7b-bec8-4cd9-8ea4-c89cd56ca46e}}
 
 \vspace*{1ex}
 
@@ -327,7 +315,7 @@ The goal of this thesis was test different approaches for such a system. Namely,
   \item Using multiframe registration of frames from a video feed to improve detection quality.
 \end{itemize}
 
-\TODO{What was my actual contribution?} 
+TODO{What was my actual contribution?}
 
 \subsection{Outline}
 \textbf{Chapter 2} describes the state of the art in OCR and low quality image enhancement and discusses the advantages and drwabacks of each of the approaches.\\
