@@ -280,7 +280,8 @@ OCR, Deblurring, Low Quality, Low Resolution
 
 \noindent\textbf{CERCS:}\\
 
-%\TODO{CERCS code and name:~\url{https://www.etis.ee/Portal/Classifiers/Details/d3717f7b-bec8-4cd9-8ea4-c89cd56ca46e}}
+\TODO{CERCS code and name:~\url{https://www.etis.ee/Portal/Classifiers/Details/d3717f7b-bec8-4cd9-8ea4-c89cd56ca46e}}
+\TODO{Is this necessary at all?}
 
 \vspace*{1ex}
 
@@ -297,7 +298,7 @@ OCR, Deblurring, Low Quality, Low Resolution
 \newpage
 \section{Introduction}
 
-Optical character recognition (OCR) is the conversion of text in analog form, such as images or printed documents, into digital text. OCR is not a new concept by any means, a patent for a system which can be called the predecessor of modern OCR was already granted in 1931. Modern OCR systems are of course far more powerful.
+Optical character recognition (OCR) is the conversion of text to a machine encoded form, such as images or printed documents. OCR is not a new concept by any means. A patent for a system which can be called the predecessor of modern OCR was already granted in 1931. Modern OCR systems are, of course, far more powerful.
 
 \subsection{Motivation}
 
@@ -307,7 +308,7 @@ Accurate OCR from low quality images and video could solve several problems for 
 
 \subsection{Contributions}
 
-The goal of this thesis was test different approaches for such a system. Namely,
+The goal of this thesis is test different approaches for such a system. Namely,
 \begin{itemize}
   \item Training a neural network (NN) on low quality images. And testing results on low quality images.
   \item Training a NN on high quality images and testing on digitally enhanced low quality images.
@@ -315,43 +316,64 @@ The goal of this thesis was test different approaches for such a system. Namely,
   \item Using multiframe registration of frames from a video feed to improve detection quality.
 \end{itemize}
 
-TODO{What was my actual contribution?}
+\TODO{Add actual contribution after work is done.}
 
 \subsection{Outline}
-\textbf{Chapter 2} describes the state of the art in OCR and low quality image enhancement and discusses the advantages and drwabacks of each of the approaches.\\
+
+Following is the outline of the thesis.
+\textbf{Chapter 2} describes both the history and the state of the art in OCR and low quality image enhancement and discusses the advantages and drwabacks of each of the approaches.\\
 \textbf{Chapter 3} describes the research problem and the necessity of finding a solution to the problem.\\
 \textbf{Chapter 4} describes in detail the approach taken to solve the problem.\\
 \textbf{Chapter 5} describes the evaluation process of the results as well as comparison to related works.\\
 \textbf{Chapter 5} concludes the thesis with a summary and research directions for the future
 
 \newpage
-\section{State of the Art} 
+\section{Background}
 
-This section gives an overview of current commertial OCR and image enhancement solutions as well as research related to the topic.
+This section gives an overview of the history of OCR and image enhancement solutions as well as research and commertial prducts related to the topic.
 
 \subsection{History}
 
-The history of OCR can be traced back to the late 1920s when inventor Emanuel Goldberg started developing a system he called a "Statistical Machine" which searched microfilm archives using an optical code recognition system. He was granted a patent for his invention in 1931, which was later acquired by IBM. ~\cite{1838389}
+\subsubsection{OCR}
 
-Most of modern OCR systems are based on artificial neural networks, often called just neural networks (NNs). The theoretical base for NNs dates back to the end of the 1800s and is based on the structure of the human brain in which neurons interact with eachother and the bonds between neurons can strengthen and weaken over time. ~\cite{SCHMIDHUBER201585}
+The history of OCR can be traced back to the late 1920s when inventor Emanuel Goldberg started developing a system he called a "Statistical Machine" which searched microfilm archives using an optical code recognition system. He was granted a patent for his invention in 1931, which was later acquired by IBM.~\cite{1838389}
 
-An artificial neural network consists of many simple connected processors, called artificial neurons, which produce activations based on an activation fuction producing real numbers in a predefined range. The simplest neural network consists of an input layer and an output layer. The neurons in the input layer produce activations based on the input. The output layer produces an output based on the activations of input layers. ~\cite{SCHMIDHUBER201585}
+\subsubsection{Digital Image Enhancement}
 
-Most NNs are not as simple as that and contain any number of hidden layers between the input and output layers. These hidden layers each consist of any number of neurons which each produce an activation based on the output of another layer. There are various architectures used for NNs, some are combinations of other types of networks. This work mostly focuses on convolutional neural networks (CNNs) and recurrent neural networks (RNNs). ~\cite{SCHMIDHUBER201585}
-
-\includegraphics [width=\textwidth, height=\textheight, keepaspectratio] {neuralnetworks.png} ~\cite{netzoo}
-
-CNNs are primarily used for image processing. CNNs are feedforward networks (FFNs), which means neurons do no back-propagate any information and only pass it forward to the next layer. A distinct feature of CNNs is that they consist of convolutional layers in which not all neurons are connected to all neaurons in the previous and next layers.~\cite{SCHMIDHUBER201585}
-
-RNNs are primarily used for text and speech processing. RNNs are FFNs like CNNs, however unlike CNNs they are stateful, meaning in addition to receiving data from the previous layer, each neuron retains data from previous passes. RNNs are also able to handle arbitrary input and output lengths unlike CNNs~\cite{SCHMIDHUBER201585}
-
-\TODO{1979: convolution + weight replication + subsampling (Neocognitron)}
+Digital image enhancement has been around for virtually as long as digital images have. In essence a very simple concept - take the pixel values of an image and, using some algortihm, modify them to produce a clearer image.
 
 \subsection{State of the Art}
 
-CNNs and RNNs are not mutually exclusive, however, and Baoguang Shi et al devised one of the most promising novel OCR concepts in recent history in the form of a convolutional recurrent neural network (CRNN) in their 2015 paper "An End-to-End Trainable Neural Network for Image-based Sequence Recognition and Its Application to Scene Text Recognition".
+\subsubsection{OCR}
 
-Their reasoning is that popular models like CNN cannot be applied to sequence prediction, since they operate on fixed size inputs and outputs. CRNN then behaves like an RNN in that it can accept inputs and return outputs of arbitrary size, while still retaining properties of CNNs which make them invaluable in image processing.
+Most of modern OCR systems are based on artificial neural networks, often called just neural networks (NNs). Which makes this virtually a nessecity is the fact is the number of different character sets and scripts that need to be supported.
+
+\subsubsection{Digital Image Enahncement}
+
+Same as with OCR, modern image enhancement largely relies on neural networks, because it is such a dynamic problem and as such finding a suitable algorithmic solution to the problem is difficult. In addition, there is no agreed apon metric for measuring the performance of an image enhancement method. The results of a process such as image deblurring are largely subjective.
+
+OCR is a very good context for measuring image enhancement, since the results, in this case OCR accuracy, are directly measureable before and after the enhancement process. M. D. Kim et al propose a quantitative method of measuring image deblurring accuracy in their paper "Dynamics-Based Motion Deblurring Improves the Performance of Optical
+Character Recognition During Fast Scanning of a Robotic Eye". In addition, they note that computation time is extremely important to modernt image processing solutions.~\cite{dynbmd} Indeed, since a lot of image processing happens in smartphones and microcomputers computational requirements are crutial in comparing image enhancement methods.
+
+\subsubsection{Neural Networks}
+
+The theoretical base for NNs dates back to the end of the 1800s and is based on the structure of the human brain in which neurons interact with eachother and the bonds between neurons can strengthen and weaken over time.~\cite{SCHMIDHUBER201585}
+
+An artificial neural network consists of many simple connected processors, called artificial neurons, which produce activations based on an activation fuction producing real numbers in a predefined range. The simplest neural network consists of an input layer and an output layer. The neurons in the input layer produce activations based on the input. The output layer produces an output based on the activations of input layers.~\cite{SCHMIDHUBER201585}
+
+Most NNs are not as simple as that and contain any number of hidden layers between the input and output layers. These hidden layers each consist of any number of neurons which each produce an activation based on the output of another layer. There are various architectures used for NNs, some are combinations of other types of networks. This work mostly focuses on convolutional neural networks (CNNs) and recurrent neural networks (RNNs).~\cite{SCHMIDHUBER201585}
+
+\includegraphics [width=\textwidth, height=\textheight, keepaspectratio] {neuralnetworks.png}~\cite{netzoo}
+
+CNNs are primarily used for image processing. CNNs are feedforward networks (FFNs), which means neurons do no back-propagate any information and only pass it forward to the next layer. A distinct feature of CNNs is that they consist of convolutional layers in which not all neurons are connected to all neurons in the previous and next layers.~\cite{SCHMIDHUBER201585}
+
+RNNs are primarily used for text and speech processing. RNNs are FFNs like CNNs. However, unlike CNNs they are stateful, meaning in addition to receiving data from the previous layer, each neuron retains data from previous passes. RNNs are also able to handle arbitrary input and output lengths unlike CNNs.~\cite{SCHMIDHUBER201585}
+
+\TODO{1979: convolution + weight replication + subsampling (Neocognitron)}
+
+CNNs and RNNs are not mutually exclusive, however, and B. Shi et al devised one of the most promising novel OCR concepts in recent history in the form of a convolutional recurrent neural network (CRNN) in their 2015 paper "An End-to-End Trainable Neural Network for Image-based Sequence Recognition and Its Application to Scene Text Recognition".~\cite{Shi2017AnET}
+
+Their reasoning is that popular models like CNN cannot be applied to sequence prediction, since they operate on fixed size inputs and outputs. CRNN then behaves like an RNN in that it can accept inputs and return outputs of arbitrary size, while still retaining properties of CNNs which make them invaluable in image processing.~\cite{Shi2017AnET}
 
 \subsubsection{Commertial OCR systems}
 
