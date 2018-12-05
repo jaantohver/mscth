@@ -281,7 +281,7 @@ OCR, Deblurring, Low Quality, Low Resolution
 \noindent\textbf{CERCS:}\\
 
 \TODO{CERCS code and name:~\url{https://www.etis.ee/Portal/Classifiers/Details/d3717f7b-bec8-4cd9-8ea4-c89cd56ca46e}}
-\TODO{Is this necessary at all?}
+\TODO{Is CERCS necessary at all?}
 
 \vspace*{1ex}
 
@@ -298,7 +298,7 @@ OCR, Deblurring, Low Quality, Low Resolution
 \newpage
 \section{Introduction}
 
-Optical character recognition (OCR) is the conversion of text to a machine encoded form, such as images or printed documents. OCR is not a new concept by any means. A patent for a system which can be called the predecessor of modern OCR was already granted in 1931. Modern OCR systems are, of course, far more powerful.
+Optical character recognition (OCR) is the conversion of text to a machine encoded form, such as converting images or printed documents to text documents. OCR is not a new concept by any means. A patent for a system which can be called the predecessor of modern OCR was already granted in 1931.~\cite{1838389} Modern OCR systems are, of course, far more powerful.
 
 \subsection{Motivation}
 
@@ -321,6 +321,8 @@ The goal of this thesis is test different approaches for such a system. Namely,
 \subsection{Outline}
 
 Following is the outline of the thesis.
+
+\noindent
 \textbf{Chapter 2} describes both the history and the state of the art in OCR and low quality image enhancement and discusses the advantages and drwabacks of each of the approaches.\\
 \textbf{Chapter 3} describes the research problem and the necessity of finding a solution to the problem.\\
 \textbf{Chapter 4} describes in detail the approach taken to solve the problem.\\
@@ -340,22 +342,13 @@ The history of OCR can be traced back to the late 1920s when inventor Emanuel Go
 
 \subsubsection{Digital Image Enhancement}
 
-Digital image enhancement has been around for virtually as long as digital images have. In essence a very simple concept - take the pixel values of an image and, using some algortihm, modify them to produce a clearer image.
+Digital image enhancement has been around for virtually as long as digital images have, the 1950s~\cite{dipanniversary}. In essence a very simple concept - take the pixel values of an image and, using some algortihm, modify them to produce a clearer image, it was advanced futher alongside space related and medical reasearch.~\cite{Rosenfeld}
 
 \subsection{State of the Art}
 
-\subsubsection{OCR}
-
-Most of modern OCR systems are based on artificial neural networks, often called just neural networks (NNs). Which makes this virtually a nessecity is the fact is the number of different character sets and scripts that need to be supported.
-
-\subsubsection{Digital Image Enahncement}
-
-Same as with OCR, modern image enhancement largely relies on neural networks, because it is such a dynamic problem and as such finding a suitable algorithmic solution to the problem is difficult. In addition, there is no agreed apon metric for measuring the performance of an image enhancement method. The results of a process such as image deblurring are largely subjective.
-
-OCR is a very good context for measuring image enhancement, since the results, in this case OCR accuracy, are directly measureable before and after the enhancement process. M. D. Kim et al propose a quantitative method of measuring image deblurring accuracy in their paper "Dynamics-Based Motion Deblurring Improves the Performance of Optical
-Character Recognition During Fast Scanning of a Robotic Eye". In addition, they note that computation time is extremely important to modernt image processing solutions.~\cite{dynbmd} Indeed, since a lot of image processing happens in smartphones and microcomputers computational requirements are crutial in comparing image enhancement methods.
-
 \subsubsection{Neural Networks}
+
+Most modern OCR systems and image anhancement techniques are based on artificial neural networks, often called just neural networks (NNs). Which makes this virtually a nessecity is the fact that both of those problems are very dynamic and not well solvable algorithmically.
 
 The theoretical base for NNs dates back to the end of the 1800s and is based on the structure of the human brain in which neurons interact with eachother and the bonds between neurons can strengthen and weaken over time.~\cite{SCHMIDHUBER201585}
 
@@ -371,22 +364,32 @@ RNNs are primarily used for text and speech processing. RNNs are FFNs like CNNs.
 
 \TODO{1979: convolution + weight replication + subsampling (Neocognitron)}
 
+\subsubsection{OCR}
+
+OCR is a diffucult problem since a sufficiently dyncamic OCR system should be able to work on hundreds of different scripts containsing tens of millions of different characters. As it stands, OCR systems are quite specific to a problem that they solve, such that moving from latin script to an urdu script is a diffucult task for an OCR system.~\cite{urdu}
+
+Many OCR engines support over 100 languages, such as Tesseract, probably the most well known one. It started as proprietary software developed by Hewlett Packard in 1985, but was open sourced in 2005. Since then its development is continued by the community. Development has been sponsored by Google starting from 2006.~\cite{tesseract}
+
+Still, it is not ideal that OCR systems have to be trained to fit specific requirements. An ideal system would be able to recognise characters from whichever character set it is given as input.
+
+\subsubsection{Digital Image Enahncement}
+
+What makes digital image enhancement such a complicated research question is the fact there is no agreed apon metric for measuring the performance of an image enhancement method. The results of a process such as image deblurring are largely subjective.
+
+OCR is a very good context for measuring image enhancement, since the results, in this case OCR accuracy, are directly measureable before and after the enhancement process. M. D. Kim et al propose a quantitative method of measuring image deblurring accuracy in their paper "Dynamics-Based Motion Deblurring Improves the Performance of Optical
+Character Recognition During Fast Scanning of a Robotic Eye". In addition, they note that computation time is extremely important to modernt image processing solutions.~\cite{dynbmd} Indeed, since a lot of image processing happens in smartphones and microcomputers computational requirements are crutial in comparing image enhancement methods.
+
 CNNs and RNNs are not mutually exclusive, however, and B. Shi et al devised one of the most promising novel OCR concepts in recent history in the form of a convolutional recurrent neural network (CRNN) in their 2015 paper "An End-to-End Trainable Neural Network for Image-based Sequence Recognition and Its Application to Scene Text Recognition".~\cite{Shi2017AnET}
 
 Their reasoning is that popular models like CNN cannot be applied to sequence prediction, since they operate on fixed size inputs and outputs. CRNN then behaves like an RNN in that it can accept inputs and return outputs of arbitrary size, while still retaining properties of CNNs which make them invaluable in image processing.~\cite{Shi2017AnET}
-
-\subsubsection{Commertial OCR systems}
-
-Tesseract is probably the most well known OCR engine. It started as proprietary software developed by Hewlett Packard in 1985, but was open sourced in 2005. Since then its development is continued by the community. Development has been sponsored by Google starting from 2006. \TODO {citations}
-
-Tesseract supports over 100 languages by default and can be trained to work with any language or script. 
+\TODO{These sections doen't fit here well.}
 
 \clearpage
 \section{Conclusion}
 
-\TODO{what did you do?} 
+\TODO{What did you do?} 
 \TODO{What are the results?}
-\TODO{future work?}
+\TODO{Future work?}
 
 \newpage
 
@@ -396,10 +399,8 @@ Tesseract supports over 100 languages by default and can be trained to work with
 
 \addcontentsline{toc}{section}{\refname}
 
-
 % Use Biblatex if you have problems with Estonian keywords
 %\printbibliography %biblatex
-
 
 % Use alternative local LaTeX bibliography
 \begin{comment}
@@ -461,7 +462,6 @@ I certify that granting the non-exclusive licence does not infringe the intellec
 \end{enumerate}
 
 \noindent
-Tartu, 02.18.2018
+Tartu, 05.12.2018
 
 \end{document}
-
